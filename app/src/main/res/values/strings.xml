@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">guess-rgb-kotlin</string>
+    <string name="app_name">Guess RGB</string>
+    <string name="right_answer">Right!</string>
+    <string name="wrong_answer">Wrong!</string>
+    <string name="total_score">TOTAL SCORE</string>
+    <string name="right">RIGHT</string>
+    <string name="wrong">WRONG</string>
+    <string name="total_statistic">TOTAL STATISTIC</string>
+    <string name="copied_to_buffer">Copied to buffer</string>
+    <string name="exit_from_application">Exit</string>
+    <string name="share">Share</string>
+    <string name="share_using">Share using</string>
 </resources>

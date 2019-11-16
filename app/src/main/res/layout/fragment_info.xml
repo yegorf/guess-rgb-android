@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="В чем смысл игры?"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Цель игры - угадать цвет по его RGB-коду."
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Что такое RGB?"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RGB - аббривиатура от слов red, green, blue аддитивная цветовая модель, как правило, описывающая способ кодирования цвета для цветовоспроизведения с помощью трёх цветов, которые принято называть основными. "
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="А человеческим языком?"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Это значит что все цвета, которые вы видите на экране получены или могут быть получены при помощи комбинации всего трех цветов - красного, зеленого и синего."
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Как так?"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Все 3 цвета смешиваются между собой и получается новый цвет (как с красками). Для получения разных цветов каждый из 3 основных цветов имеет свою интенсивность (в асоциации с красками - количество краски того или иного цвета). Интенсивность задается числом от 0 до 255."
+        />
+
+
+</LinearLayout>

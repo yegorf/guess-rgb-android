@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_color_rgb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RGB(255, 255, 255)"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:fontFamily="casual"
+        android:layout_marginTop="20dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <Button
+            android:id="@+id/plate1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/plate"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/plate"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/plate3"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toEndOf="@+id/plate1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/plate"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/plate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plate1"
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/plate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plate3"
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/plate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plate4"
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/plate"
+            app:layout_constraintEnd_toStartOf="@+id/plate9"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toEndOf="@+id/plate7"
+            app:layout_constraintTop_toBottomOf="@+id/plate5"
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/plate"
+            app:layout_constraintEnd_toStartOf="@+id/plate9"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toEndOf="@+id/plate7"
+            app:layout_constraintTop_toBottomOf="@+id/plate2"
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:id="@+id/plate9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/plate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plate6"
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

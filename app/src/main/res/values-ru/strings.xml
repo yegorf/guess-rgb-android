@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Угадай RGB</string>
+    <string name="right_answer">Правильно!</string>
+    <string name="wrong_answer">Неправильно!</string>
+    <string name="total_score">ОБЩИЙ СЧЕТ</string>
+    <string name="right">ПРАВИЛЬНО</string>
+    <string name="wrong">НЕПРАВИЛЬНО</string>
+    <string name="total_statistic">ОБЩАЯ СТАТИСТИКА</string>
+    <string name="copied_to_buffer">Скопировано</string>
+    <string name="exit_from_application">Выход</string>
+    <string name="share">Поделиться</string>
+    <string name="share_using">Поделиться через</string>
+</resources>
