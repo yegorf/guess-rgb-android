@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/v_color_code"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -33,13 +34,13 @@
 
     </LinearLayout>
 
-<!--    <com.skydoves.colorpickerview.ColorPickerView-->
-<!--        android:id="@+id/v_color_picker"-->
-<!--        android:layout_width="350dp"-->
-<!--        android:layout_height="350dp"-->
-<!--        app:palette="@drawable/palette"-->
-<!--        android:layout_gravity="center"-->
-<!--        app:selector="@drawable/wheel"-->
-<!--        android:layout_marginTop="40dp"/>-->
+    <com.skydoves.colorpickerview.ColorPickerView
+        android:id="@+id/v_color_picker"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:palette="@drawable/palette"
+        android:layout_gravity="center"
+        app:selector="@drawable/wheel"
+        android:layout_marginTop="40dp"/>
 
 </LinearLayout>
