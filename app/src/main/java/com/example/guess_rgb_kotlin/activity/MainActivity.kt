@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .addToBackStack(null)
-            .add(R.id.fragment_container, GameFragment.getInstanse())
+            .add(R.id.fragment_container, GameFragment.getInstance())
             .commit()
     }
 

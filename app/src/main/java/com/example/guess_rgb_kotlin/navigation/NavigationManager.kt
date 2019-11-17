@@ -4,7 +4,7 @@ import android.app.Activity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.guess_rgb_kotlin.R
-import com.example.guess_rgb_kotlin.fragment.GameFragment
+import com.example.guess_rgb_kotlin.fragment.*
 
 class NavigationManager(private val fragmentManager: FragmentManager) {
 
@@ -36,11 +36,11 @@ class NavigationManager(private val fragmentManager: FragmentManager) {
 
     private fun getFragmentForScreen(screenName: String): Fragment? {
         return when (screenName) {
-            SCREEN_GAME -> GameFragment()
-            SCREEN_STATISTICS -> Fragment()
-            SCREEN_INFO -> Fragment()
-            SCREEN_RGB -> Fragment()
-            SCREEN_SETTINGS -> Fragment()
+            SCREEN_GAME -> GameFragment.getInstance()
+            SCREEN_STATISTICS -> StatisticFragment.getInstance()
+            SCREEN_INFO -> InfoFragment.getInstance()
+            SCREEN_RGB -> RgbFragment.getInstance()
+            SCREEN_SETTINGS -> SettingsFragment.getInstance()
             else -> null
         }
     }

@@ -35,10 +35,9 @@ class GameFragment : Fragment() {
     private lateinit var plate9: Button
 
     private var plates = LinkedList<Button>()
-    private val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
 
     companion object {
-        fun getInstanse(): GameFragment {
+        fun getInstance(): GameFragment {
             return GameFragment()
         }
     }
@@ -107,6 +106,7 @@ class GameFragment : Fragment() {
             is ColorDrawable -> drawable.color = rgb(color.r, color.g, color.b)
         }
 
+        val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
         if (right) {
             colorTv.text = color.toString()
             plate.setOnClickListener {

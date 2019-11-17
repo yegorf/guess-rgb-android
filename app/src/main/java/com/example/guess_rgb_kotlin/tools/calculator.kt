@@ -3,12 +3,12 @@ package com.example.guess_rgb_kotlin.tools
 import java.text.DecimalFormat
 
 fun calculateWin(win: Int, loose: Int): String {
-    val percent = ((win / (win + loose)) * 100).toDouble()
+    val percent = ((win.toDouble() / (win + loose)) * 100)
     return round(percent)
 }
 
 fun calculateLoose(win: Int, loose: Int): String {
-    val percent = ((loose / (win + loose)) * 100).toDouble()
+    val percent = ((loose.toDouble() / (win + loose)) * 100)
     return round(percent)
 }
 
