@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import butterknife.ButterKnife
 import com.example.guess_rgb_kotlin.R
+import com.example.guess_rgb_kotlin.constant.PrefKey
 import com.example.guess_rgb_kotlin.entity.Color
 import com.example.guess_rgb_kotlin.tools.generateRGB
 import com.example.guess_rgb_kotlin.tools.getPlateNum
@@ -115,8 +116,8 @@ class GameFragment : Fragment() {
 
                 if (activity != null) {
                     if (preferences != null) {
-                        val count = preferences.getInt("WIN_SCORE", 0)
-                        preferences.edit().putInt("WIN_SCORE", count + 1).apply()
+                        val count = preferences.getInt(PrefKey.WIN_SCORE, 0)
+                        preferences.edit().putInt(PrefKey.WIN_SCORE, count + 1).apply()
                     }
                 }
             }
@@ -125,8 +126,8 @@ class GameFragment : Fragment() {
                 setPlateText(plate, color)
                 if (activity != null) {
                     if (preferences != null) {
-                        val count = preferences.getInt("LOOSE_SCORE", 0)
-                        preferences.edit().putInt("LOOSE_SCORE", count + 1).apply()
+                        val count = preferences.getInt(PrefKey.LOOSE_SCORE, 0)
+                        preferences.edit().putInt(PrefKey.LOOSE_SCORE, count + 1).apply()
                     }
                 }
                 plate.isClickable = false

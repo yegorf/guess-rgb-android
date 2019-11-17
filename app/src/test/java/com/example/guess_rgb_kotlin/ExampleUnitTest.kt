@@ -1,9 +1,6 @@
 package com.example.guess_rgb_kotlin
 
-import com.example.guess_rgb_kotlin.tools.calculateWin
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -13,6 +10,6 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        print(calculateWin(3, 7))
+        println(PreferenceKey.WIN_SCORE.name)
     }
 }
