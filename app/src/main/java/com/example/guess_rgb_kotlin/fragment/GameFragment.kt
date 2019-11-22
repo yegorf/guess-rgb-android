@@ -38,7 +38,7 @@ class GameFragment : Fragment() {
     private var plates = LinkedList<Button>()
 
     companion object {
-        fun getInstance(): GameFragment {
+        fun newInstance(): GameFragment {
             return GameFragment()
         }
     }

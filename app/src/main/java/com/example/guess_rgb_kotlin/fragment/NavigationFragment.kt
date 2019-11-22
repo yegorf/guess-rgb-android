@@ -55,7 +55,7 @@ class NavigationFragment : Fragment() {
             manager.openFragment(NavigationManager.SCREEN_RGB)
         }
         settings.setOnClickListener {
-            manager.openFragment(NavigationManager.SCREEN_SETTINGS)
+            manager.openFragment(NavigationManager.SCREEN_LOGIN)
         }
     }
 }

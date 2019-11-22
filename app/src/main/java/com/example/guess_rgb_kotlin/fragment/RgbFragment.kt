@@ -20,7 +20,7 @@ class RgbFragment : Fragment() {
     lateinit var colorView: LinearLayout
 
     companion object {
-        public fun getInstance(): RgbFragment {
+        public fun newInstance(): RgbFragment {
             return RgbFragment()
         }
     }
