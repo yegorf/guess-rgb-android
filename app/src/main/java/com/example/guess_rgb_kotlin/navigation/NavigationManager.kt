@@ -49,8 +49,10 @@ class NavigationManager(private val fragmentManager: FragmentManager) {
             SCREEN_GAME -> GameFragment.newInstance()
             SCREEN_STATISTICS -> {
                 return if (FirebaseAuth.getInstance().currentUser != null) {
+                    currentScreen = SCREEN_STATISTICS
                     StatisticFragment.newInstance()
                 } else {
+                    currentScreen = SCREEN_LOGIN
                     LoginFragment.newInstance()
                 }
             }
@@ -62,7 +64,7 @@ class NavigationManager(private val fragmentManager: FragmentManager) {
         }
     }
 
-    public fun navigateBack(activity: Activity) {
+    fun navigateBack(activity: Activity) {
         if (currentScreen == SCREEN_GAME) {
             activity.finish()
         } else {

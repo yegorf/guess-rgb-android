@@ -43,7 +43,11 @@ class GameFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_game, container, false)
         ButterKnife.bind(this, view)
         initViews(view)
@@ -62,7 +66,6 @@ class GameFragment : Fragment() {
         return view
     }
 
-    //todo binding
     private fun initViews(view: View) {
         colorTv = view.findViewById(R.id.tv_color_rgb)
         plate1 = view.findViewById(R.id.plate1)

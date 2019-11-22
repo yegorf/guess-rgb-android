@@ -1,7 +1,6 @@
 package com.example.guess_rgb_kotlin.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +49,7 @@ class RgbFragment : Fragment() {
                         255 - colorArray[3]
                     )
                 )
-        }
+            }
     }
 
     private fun initViews(view: View) {

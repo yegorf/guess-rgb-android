@@ -12,20 +12,17 @@ import com.example.guess_rgb_kotlin.navigation.NavigationManager
 class NavigationFragment : Fragment() {
 
     lateinit var manager: NavigationManager
-
     lateinit var game: ImageButton
     lateinit var account: ImageButton
     lateinit var info: ImageButton
     lateinit var rgb: ImageButton
     lateinit var settings: ImageButton
 
-    companion object {
-        fun getInstance(): NavigationFragment {
-            return NavigationFragment()
-        }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_navigation, container, false)
         initViews(view)
         setOnClickListeners()
@@ -55,7 +52,7 @@ class NavigationFragment : Fragment() {
             manager.openFragment(NavigationManager.SCREEN_RGB)
         }
         settings.setOnClickListener {
-            manager.openFragment(NavigationManager.SCREEN_LOGIN)
+            manager.openFragment(NavigationManager.SCREEN_SETTINGS)
         }
     }
 }

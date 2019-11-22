@@ -13,4 +13,10 @@ class MainActivity : AppCompatActivity() {
         NavigationManager(supportFragmentManager)
             .openRoot()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        NavigationManager(supportFragmentManager)
+            .navigateBack(this)
+    }
 }
