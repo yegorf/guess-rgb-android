@@ -1,5 +1,6 @@
 package com.example.guess_rgb_kotlin
 
+import com.example.guess_rgb_kotlin.data.getTotalStatistic
 import org.junit.Test
 
 /**
@@ -10,5 +11,6 @@ import org.junit.Test
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
+        getTotalStatistic()
     }
 }

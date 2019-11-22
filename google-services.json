@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "292563700547",
+    "firebase_url": "https://guess-rgb-kotlin.firebaseio.com",
+    "project_id": "guess-rgb-kotlin",
+    "storage_bucket": "guess-rgb-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292563700547:android:967cbe0ed9912c49827df6",
+        "android_client_info": {
+          "package_name": "com.example.guess_rgb_kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292563700547-89496cuik70m59ikmdqfsitackao86mt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guess_rgb_kotlin",
+            "certificate_hash": "5d176a300a5109e0c8bed7ed31f18dc16914c6cc"
+          }
+        },
+        {
+          "client_id": "292563700547-9saadf8t8mo6gis8kpsh4gf91atv2ttj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt6AD1zPYKMHW2cFTLSNce8Vj9qL5qYow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292563700547-9saadf8t8mo6gis8kpsh4gf91atv2ttj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
