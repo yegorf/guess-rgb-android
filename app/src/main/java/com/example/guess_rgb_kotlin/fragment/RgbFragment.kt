@@ -19,7 +19,7 @@ class RgbFragment : Fragment() {
     lateinit var colorView: LinearLayout
 
     companion object {
-        public fun newInstance(): RgbFragment {
+        fun newInstance(): RgbFragment {
             return RgbFragment()
         }
     }
@@ -37,7 +37,7 @@ class RgbFragment : Fragment() {
 
     private fun setListeners() {
         colorPickerView.colorListener =
-            ColorEnvelopeListener { colorEnvelope: ColorEnvelope, b: Boolean ->
+            ColorEnvelopeListener { colorEnvelope: ColorEnvelope, _: Boolean ->
                 colorView.setBackgroundColor(colorEnvelope.color)
                 val colorArray = colorEnvelope.argb
                 val color = "${colorArray[1]},${colorArray[2]},${colorArray[3]}"

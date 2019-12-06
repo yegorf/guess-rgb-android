@@ -1,43 +1,39 @@
 package com.example.guess_rgb_kotlin.data
 
 import android.util.Log
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.example.guess_rgb_kotlin.data.entity.User
+import com.example.guess_rgb_kotlin.fragment.StatisticFragment
+import com.google.firebase.firestore.FirebaseFirestore
 
 
-fun getTotalStatistic() {
-//    val database = FirebaseFirestore
-//        .getInstance()
-//        .apply {
-//            firestoreSettings = FirebaseFirestoreSettings.Builder()
-//                .setPersistenceEnabled(false)
-//                .build()
-//        }
+const val TAG = "Firestore"
 
-//    database.collection("users")
-//        .get()
-//        .addOnSuccessListener {
-//            val users: List<User> = it.toObjects(User::class.java)
-//        }
-//        .addOnFailureListener {
-//
-//        }
+const val USERS = "users"
 
-    val instance = FirebaseDatabase.getInstance()
-    val database = instance.reference
-
-    database.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
-        override fun onCancelled(p0: DatabaseError) {
-        }
-
-        override fun onDataChange(p0: DataSnapshot) {
-
-            val users = p0.children
-            users.forEach {
-                Log.i("yegorf", it.toString())
+fun getTotalStatistic(view: StatisticFragment) {
+    val store = FirebaseFirestore.getInstance()
+    store.collection(USERS)
+        .get()
+        .addOnSuccessListener { result ->
+            val data = mutableListOf<User>()
+            result.forEach {
+                val user = it.toObject(User::class.java)
+                user.email = it.id
+                data.add(user)
             }
+            view.setGlobalStatistics(data)
         }
-    })
+        .addOnFailureListener { exception ->
+            Log.e(TAG, exception.toString())
+        }
+}
+
+fun updateUserStatistic(user: User) {
+    val store = FirebaseFirestore.getInstance()
+    val userMap = mutableMapOf<String, Any>()
+    userMap.put(user.email, user)
+
+    store.collection(USERS)
+        .document(user.email)
+        .update(userMap)
 }

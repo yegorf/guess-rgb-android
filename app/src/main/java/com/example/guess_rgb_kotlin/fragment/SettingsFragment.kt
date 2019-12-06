@@ -10,7 +10,7 @@ import com.example.guess_rgb_kotlin.R
 class SettingsFragment : Fragment() {
 
     companion object {
-        public fun newInstance(): SettingsFragment {
+        fun newInstance(): SettingsFragment {
             return SettingsFragment()
         }
     }

@@ -11,4 +11,5 @@
     <string name="share">Share</string>
     <string name="share_using">Share using</string>
     <string name="sign_out">SIGN OUT</string>
+    <string name="send">SEND</string>
 </resources>

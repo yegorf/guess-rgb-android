@@ -10,7 +10,7 @@ import com.example.guess_rgb_kotlin.R
 class InfoFragment : Fragment() {
 
     companion object {
-        public fun newInstance(): InfoFragment {
+        fun newInstance(): InfoFragment {
             return InfoFragment()
         }
     }

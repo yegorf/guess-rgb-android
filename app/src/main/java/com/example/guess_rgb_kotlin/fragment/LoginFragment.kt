@@ -23,10 +23,9 @@ class LoginFragment : Fragment() {
     lateinit var passwordEt: EditText
     lateinit var loginBtn: Button
     lateinit var registrationBtn: Button
-    private val TAG = "yegorf"
 
     companion object {
-        public fun newInstance(): LoginFragment {
+        fun newInstance(): LoginFragment {
             return LoginFragment()
         }
     }
@@ -104,9 +103,5 @@ class LoginFragment : Fragment() {
                     }
                 }
             }
-    }
-
-    private fun signOut() {
-        auth.signOut()
     }
 }
