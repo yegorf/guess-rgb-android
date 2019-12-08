@@ -94,7 +94,7 @@ class StatisticFragment : Fragment() {
             user.email = FirebaseAuth.getInstance().currentUser?.email.toString()
             user.win = winCount.toLong()
             user.loose = looseCount.toLong()
-            updateUserStatistic(user)
+            updateUserStatistic(this, user)
         }
     }
 
@@ -104,12 +104,13 @@ class StatisticFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add("sign out").setOnMenuItemClickListener {
-            FirebaseAuth.getInstance().signOut()
-            NavigationManager(fragmentManager as FragmentManager)
-                .openFragment(NavigationManager.SCREEN_LOGIN)
-            true
-        }
+        menu.add(context?.getString(R.string.sign_out))
+            .setOnMenuItemClickListener {
+                FirebaseAuth.getInstance().signOut()
+                NavigationManager(fragmentManager as FragmentManager)
+                    .openFragment(NavigationManager.SCREEN_LOGIN)
+                true
+            }
         super.onCreateOptionsMenu(menu, inflater)
     }
 }

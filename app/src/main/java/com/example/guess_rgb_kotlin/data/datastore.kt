@@ -28,12 +28,16 @@ fun getTotalStatistic(view: StatisticFragment) {
         }
 }
 
-fun updateUserStatistic(user: User) {
+fun updateUserStatistic(view: StatisticFragment, user: User) {
     val store = FirebaseFirestore.getInstance()
-    val userMap = mutableMapOf<String, Any>()
-    userMap.put(user.email, user)
+    val map = hashMapOf(
+        "win" to user.win,
+        "loose" to user.loose
+    )
 
     store.collection(USERS)
         .document(user.email)
-        .update(userMap)
+        .set(map)
+
+    getTotalStatistic(view)
 }
