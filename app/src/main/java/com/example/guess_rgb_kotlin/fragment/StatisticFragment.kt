@@ -3,7 +3,8 @@ package com.example.guess_rgb_kotlin.fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -19,14 +20,16 @@ import com.example.guess_rgb_kotlin.navigation.NavigationManager
 import com.example.guess_rgb_kotlin.tools.calculateLoose
 import com.example.guess_rgb_kotlin.tools.calculateWin
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.math.round
 
 class StatisticFragment : Fragment() {
 
     private lateinit var winCountTv: TextView
     private lateinit var looseCountTv: TextView
     private lateinit var userTv: TextView
-    private lateinit var sendDataBtn: Button
+    private lateinit var sendDataBtn: ImageButton
     private lateinit var recycler: RecyclerView
+    private lateinit var scorePb: ProgressBar
 
     companion object {
         fun newInstance(): StatisticFragment {
@@ -53,6 +56,7 @@ class StatisticFragment : Fragment() {
         userTv = view.findViewById(R.id.tv_user)
         sendDataBtn = view.findViewById(R.id.btn_send_data)
         recycler = view.findViewById(R.id.rv_global_statistics)
+        scorePb = view.findViewById(R.id.pb_progress)
     }
 
     private fun setData() {
@@ -69,11 +73,16 @@ class StatisticFragment : Fragment() {
             looseCount = preferences.getInt(PrefKey.LOOSE_SCORE, 0)
         }
 
-        val win = "$winCount (${calculateWin(winCount, looseCount)}%)"
-        val loose = "$looseCount (${calculateLoose(winCount, looseCount)}%)"
+        val winPercent = calculateWin(winCount, looseCount)
+        val loosePercent = calculateLoose(winCount, looseCount)
+
+        val win = "$winCount ($winPercent%)"
+        val loose = "$looseCount ($loosePercent%)"
 
         winCountTv.text = win
         looseCountTv.text = loose
+
+        scorePb.progress = round(winPercent.toFloat()).toInt()
 
         getTotalStatistic(this)
     }
@@ -99,6 +108,8 @@ class StatisticFragment : Fragment() {
     }
 
     fun setGlobalStatistics(users: List<User>) {
+        users.forEach { it.setPercents() }
+        users.sortedBy { it.winPercent }
         recycler.adapter = StatisticsAdapter(users, (context as Context))
         recycler.layoutManager = LinearLayoutManager(context)
     }

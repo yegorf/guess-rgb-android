@@ -38,6 +38,10 @@ fun updateUserStatistic(view: StatisticFragment, user: User) {
     store.collection(USERS)
         .document(user.email)
         .set(map)
-
-    getTotalStatistic(view)
+        .addOnSuccessListener {
+            getTotalStatistic(view)
+        }
+        .addOnFailureListener {
+            //todo toast
+        }
 }

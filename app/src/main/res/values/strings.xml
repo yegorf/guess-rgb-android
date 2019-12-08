@@ -13,4 +13,5 @@
     <string name="sign_out">SIGN OUT</string>
     <string name="send">SEND</string>
     <string name="global_user_statistic">GLOBAL USER STATISTIC</string>
+    <string name="send_to_global_statistic">send to global statistic</string>
 </resources>
