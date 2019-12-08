@@ -31,9 +31,9 @@ class StatisticsAdapter(var data: List<User>, context: Context) :
 
     class StatisticsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        lateinit var nameTv: TextView
-        lateinit var winTv: TextView
-        lateinit var looseTv: TextView
+        private lateinit var nameTv: TextView
+        private lateinit var winTv: TextView
+        private lateinit var looseTv: TextView
 
         fun initViews() {
             nameTv = itemView.findViewById(R.id.tv_user_name)

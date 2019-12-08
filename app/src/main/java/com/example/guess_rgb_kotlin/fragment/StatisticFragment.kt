@@ -2,9 +2,7 @@ package com.example.guess_rgb_kotlin.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -27,7 +25,6 @@ class StatisticFragment : Fragment() {
     private lateinit var winCountTv: TextView
     private lateinit var looseCountTv: TextView
     private lateinit var userTv: TextView
-    private lateinit var signOutBtn: Button
     private lateinit var sendDataBtn: Button
     private lateinit var recycler: RecyclerView
 
@@ -42,6 +39,7 @@ class StatisticFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_statistic, container, false)
         initViews(view)
         setOnClickListeners()
@@ -53,7 +51,6 @@ class StatisticFragment : Fragment() {
         winCountTv = view.findViewById(R.id.tv_win_count)
         looseCountTv = view.findViewById(R.id.tv_loose_count)
         userTv = view.findViewById(R.id.tv_user)
-        signOutBtn = view.findViewById(R.id.btn_sign_out)
         sendDataBtn = view.findViewById(R.id.btn_send_data)
         recycler = view.findViewById(R.id.rv_global_statistics)
     }
@@ -82,11 +79,6 @@ class StatisticFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
-        signOutBtn.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            NavigationManager(fragmentManager as FragmentManager)
-                .openFragment(NavigationManager.SCREEN_LOGIN)
-        }
         sendDataBtn.setOnClickListener {
             val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
 
@@ -109,5 +101,15 @@ class StatisticFragment : Fragment() {
     fun setGlobalStatistics(users: List<User>) {
         recycler.adapter = StatisticsAdapter(users, (context as Context))
         recycler.layoutManager = LinearLayoutManager(context)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add("sign out").setOnMenuItemClickListener {
+            FirebaseAuth.getInstance().signOut()
+            NavigationManager(fragmentManager as FragmentManager)
+                .openFragment(NavigationManager.SCREEN_LOGIN)
+            true
+        }
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }
