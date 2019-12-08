@@ -61,6 +61,13 @@ class StatisticsAdapter(var data: List<User>, context: Context) :
 
         fun setPlace(place: Int) {
             placeTv.text = place.toString()
+            val medal = when(place) {
+                1 -> R.drawable.statistic_circle_1
+                2 -> R.drawable.statistic_circle_2
+                3 -> R.drawable.statistic_circle_3
+                else -> R.drawable.statistic_circle
+            }
+            placeTv.setBackgroundResource(medal)
         }
     }
 }
