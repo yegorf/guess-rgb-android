@@ -1,14 +1,15 @@
 package com.example.guess_rgb_kotlin.data
 
-import android.util.Log
+import android.widget.Toast
+import com.example.guess_rgb_kotlin.R
 import com.example.guess_rgb_kotlin.data.entity.User
 import com.example.guess_rgb_kotlin.fragment.StatisticFragment
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-const val TAG = "Firestore"
-
 const val USERS = "users"
+const val WIN_COUNT = "win"
+const val LOOSE_COUNT = "loose"
 
 fun getTotalStatistic(view: StatisticFragment) {
     val store = FirebaseFirestore.getInstance()
@@ -23,16 +24,21 @@ fun getTotalStatistic(view: StatisticFragment) {
             }
             view.setGlobalStatistics(data)
         }
-        .addOnFailureListener { exception ->
-            Log.e(TAG, exception.toString())
+        .addOnFailureListener {
+            Toast.makeText(
+                view.context,
+                view.context?.getString(R.string.network_problems),
+                Toast.LENGTH_LONG
+            )
+                .show()
         }
 }
 
 fun updateUserStatistic(view: StatisticFragment, user: User) {
     val store = FirebaseFirestore.getInstance()
     val map = hashMapOf(
-        "win" to user.win,
-        "loose" to user.loose
+        WIN_COUNT to user.win,
+        LOOSE_COUNT to user.loose
     )
 
     store.collection(USERS)
@@ -42,6 +48,11 @@ fun updateUserStatistic(view: StatisticFragment, user: User) {
             getTotalStatistic(view)
         }
         .addOnFailureListener {
-            //todo toast
+            Toast.makeText(
+                view.context,
+                view.context?.getString(R.string.network_problems),
+                Toast.LENGTH_LONG
+            )
+                .show()
         }
 }

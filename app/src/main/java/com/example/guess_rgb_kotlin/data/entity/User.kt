@@ -7,11 +7,14 @@ import kotlin.math.round
 
 class User {
     //todo refactor
-    @JvmField var email: String = "unknown"
+    @JvmField
+    var email: String = "unknown"
     @SerializedName("win")
-    @JvmField var win: Long = 0
+    @JvmField
+    var win: Long = 0
     @SerializedName("loose")
-    @JvmField var loose: Long = 0
+    @JvmField
+    var loose: Long = 0
 
     //todo remove
     var winPercent = 0

@@ -9,8 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guess_rgb_kotlin.R
 import com.example.guess_rgb_kotlin.data.entity.User
-import com.example.guess_rgb_kotlin.tools.calculateLoose
-import com.example.guess_rgb_kotlin.tools.calculateWin
 import kotlin.math.round
 
 class StatisticsAdapter(var data: List<User>, context: Context) :
