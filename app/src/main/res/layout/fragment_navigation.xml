@@ -1,54 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="45dp"
     android:background="@drawable/background_with_shadow">
 
     <ImageButton
         android:id="@+id/ib_game"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/ic_grid"
         android:layout_gravity="center"
-        android:layout_marginStart="20dp"
-        />
+        android:layout_marginStart="16dp"
+        android:background="@drawable/ic_grid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
 
     <ImageButton
         android:id="@+id/ib_account"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/ic_statistic"
         android:layout_gravity="center"
-        android:layout_marginStart="25dp"
-        />
+        android:background="@drawable/ic_statistic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ib_rgb"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toEndOf="@+id/ib_game"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/ib_rgb"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:background="@drawable/ic_rgb"
         android:layout_gravity="center"
-        android:layout_marginStart="30dp"
-        />
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/ic_rgb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ib_info"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428" />
 
     <ImageButton
         android:id="@+id/ib_info"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/ic_info"
         android:layout_gravity="center"
-        android:layout_marginStart="25dp"
-        />
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/ic_info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ib_settings"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
 
     <ImageButton
         android:id="@+id/ib_settings"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/ic_settings"
         android:layout_gravity="center"
-        android:layout_marginStart="25dp"
-        />
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

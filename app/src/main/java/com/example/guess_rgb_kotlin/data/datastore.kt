@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.widget.Toast
 import com.example.guess_rgb_kotlin.R
+import com.example.guess_rgb_kotlin.constant.PrefKey
 import com.example.guess_rgb_kotlin.data.entity.User
 import com.example.guess_rgb_kotlin.fragment.StatisticFragment
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,6 +15,7 @@ const val WIN_COUNT = "win"
 const val LOOSE_COUNT = "loose"
 
 fun getTotalStatistic(view: StatisticFragment) {
+    view.showProgress()
     val store = FirebaseFirestore.getInstance()
     store.collection(USERS)
         .get()
@@ -24,6 +26,7 @@ fun getTotalStatistic(view: StatisticFragment) {
                 user.email = it.id
                 data.add(user)
             }
+            view.dismissProgress()
             view.setGlobalStatistics(data)
         }
         .addOnFailureListener {
@@ -80,11 +83,11 @@ fun fetchUserStatistic(activity: Activity, email: String) {
             val user = document.toObject(User::class.java)
             if (user != null) {
                 val winCount = user.win
-                val looseCount = user.win
+                val looseCount = user.loose
 
                 val preferences = activity.getPreferences(Context.MODE_PRIVATE)
-                preferences.edit().putInt(WIN_COUNT, winCount.toInt()).apply()
-                preferences.edit().putInt(LOOSE_COUNT, looseCount.toInt()).apply()
+                preferences.edit().putInt(PrefKey.WIN_SCORE, winCount.toInt()).apply()
+                preferences.edit().putInt(PrefKey.LOOSE_SCORE, looseCount.toInt()).apply()
             }
         }
 }

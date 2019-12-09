@@ -1,6 +1,7 @@
 package com.example.guess_rgb_kotlin.fragment
 
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageButton
@@ -29,6 +30,7 @@ class StatisticFragment : Fragment() {
     private lateinit var userTv: TextView
     private lateinit var recycler: RecyclerView
     private lateinit var scorePb: ProgressBar
+    private lateinit var fetchPb: ProgressBar
 
     companion object {
         fun newInstance(): StatisticFragment {
@@ -55,6 +57,16 @@ class StatisticFragment : Fragment() {
         userTv = view.findViewById(R.id.tv_user)
         recycler = view.findViewById(R.id.rv_global_statistics)
         scorePb = view.findViewById(R.id.pb_progress)
+        fetchPb = view.findViewById(R.id.pb_fetch_progress)
+    }
+
+    public fun showProgress() {
+        fetchPb.visibility = View.VISIBLE
+    }
+
+    public fun dismissProgress() {
+        fetchPb.visibility = View.GONE
+
     }
 
     private fun setData() {
