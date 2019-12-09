@@ -27,7 +27,6 @@ class StatisticFragment : Fragment() {
     private lateinit var winCountTv: TextView
     private lateinit var looseCountTv: TextView
     private lateinit var userTv: TextView
-    private lateinit var sendDataBtn: ImageButton
     private lateinit var recycler: RecyclerView
     private lateinit var scorePb: ProgressBar
 
@@ -45,8 +44,8 @@ class StatisticFragment : Fragment() {
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_statistic, container, false)
         initViews(view)
-        setOnClickListeners()
         setData()
+        sendStatistic()
         return view
     }
 
@@ -54,7 +53,6 @@ class StatisticFragment : Fragment() {
         winCountTv = view.findViewById(R.id.tv_win_count)
         looseCountTv = view.findViewById(R.id.tv_loose_count)
         userTv = view.findViewById(R.id.tv_user)
-        sendDataBtn = view.findViewById(R.id.btn_send_data)
         recycler = view.findViewById(R.id.rv_global_statistics)
         scorePb = view.findViewById(R.id.pb_progress)
     }
@@ -87,24 +85,22 @@ class StatisticFragment : Fragment() {
         getTotalStatistic(this)
     }
 
-    private fun setOnClickListeners() {
-        sendDataBtn.setOnClickListener {
-            val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
+    private fun sendStatistic() {
+        val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
 
-            var winCount = 0
-            var looseCount = 0
+        var winCount = 0
+        var looseCount = 0
 
-            if (preferences != null) {
-                winCount = preferences.getInt(PrefKey.WIN_SCORE, 0)
-                looseCount = preferences.getInt(PrefKey.LOOSE_SCORE, 0)
-            }
-
-            val user = User()
-            user.email = FirebaseAuth.getInstance().currentUser?.email.toString()
-            user.win = winCount.toLong()
-            user.loose = looseCount.toLong()
-            updateUserStatistic(this, user)
+        if (preferences != null) {
+            winCount = preferences.getInt(PrefKey.WIN_SCORE, 0)
+            looseCount = preferences.getInt(PrefKey.LOOSE_SCORE, 0)
         }
+
+        val user = User()
+        user.email = FirebaseAuth.getInstance().currentUser?.email.toString()
+        user.win = winCount.toLong()
+        user.loose = looseCount.toLong()
+        updateUserStatistic(this, user)
     }
 
     fun setGlobalStatistics(users: List<User>) {

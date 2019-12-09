@@ -1,5 +1,7 @@
 package com.example.guess_rgb_kotlin.data
 
+import android.app.Activity
+import android.content.Context
 import android.widget.Toast
 import com.example.guess_rgb_kotlin.R
 import com.example.guess_rgb_kotlin.data.entity.User
@@ -54,5 +56,35 @@ fun updateUserStatistic(view: StatisticFragment, user: User) {
                 Toast.LENGTH_LONG
             )
                 .show()
+        }
+}
+
+fun updateUserStatistic(user: User) {
+    val store = FirebaseFirestore.getInstance()
+    val map = hashMapOf(
+        WIN_COUNT to user.win,
+        LOOSE_COUNT to user.loose
+    )
+
+    store.collection(USERS)
+        .document(user.email)
+        .set(map)
+}
+
+fun fetchUserStatistic(activity: Activity, email: String) {
+    val store = FirebaseFirestore.getInstance()
+    store.collection(USERS)
+        .document(email)
+        .get()
+        .addOnSuccessListener { document ->
+            val user = document.toObject(User::class.java)
+            if (user != null) {
+                val winCount = user.win
+                val looseCount = user.win
+
+                val preferences = activity.getPreferences(Context.MODE_PRIVATE)
+                preferences.edit().putInt(WIN_COUNT, winCount.toInt()).apply()
+                preferences.edit().putInt(LOOSE_COUNT, looseCount.toInt()).apply()
+            }
         }
 }
