@@ -2,10 +2,9 @@ package com.example.guess_rgb_kotlin.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
+import android.view.*
+import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -21,15 +20,16 @@ import com.example.guess_rgb_kotlin.navigation.NavigationManager
 import com.example.guess_rgb_kotlin.tools.calculateLoose
 import com.example.guess_rgb_kotlin.tools.calculateWin
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.math.round
 
 class StatisticFragment : Fragment() {
 
     private lateinit var winCountTv: TextView
     private lateinit var looseCountTv: TextView
     private lateinit var userTv: TextView
-    private lateinit var signOutBtn: Button
-    private lateinit var sendDataBtn: Button
+    private lateinit var sendDataBtn: ImageButton
     private lateinit var recycler: RecyclerView
+    private lateinit var scorePb: ProgressBar
 
     companion object {
         fun newInstance(): StatisticFragment {
@@ -42,6 +42,7 @@ class StatisticFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_statistic, container, false)
         initViews(view)
         setOnClickListeners()
@@ -53,9 +54,9 @@ class StatisticFragment : Fragment() {
         winCountTv = view.findViewById(R.id.tv_win_count)
         looseCountTv = view.findViewById(R.id.tv_loose_count)
         userTv = view.findViewById(R.id.tv_user)
-        signOutBtn = view.findViewById(R.id.btn_sign_out)
         sendDataBtn = view.findViewById(R.id.btn_send_data)
         recycler = view.findViewById(R.id.rv_global_statistics)
+        scorePb = view.findViewById(R.id.pb_progress)
     }
 
     private fun setData() {
@@ -72,21 +73,21 @@ class StatisticFragment : Fragment() {
             looseCount = preferences.getInt(PrefKey.LOOSE_SCORE, 0)
         }
 
-        val win = "$winCount (${calculateWin(winCount, looseCount)}%)"
-        val loose = "$looseCount (${calculateLoose(winCount, looseCount)}%)"
+        val winPercent = calculateWin(winCount, looseCount)
+        val loosePercent = calculateLoose(winCount, looseCount)
+
+        val win = "$winCount ($winPercent%)"
+        val loose = "$looseCount ($loosePercent%)"
 
         winCountTv.text = win
         looseCountTv.text = loose
+
+        scorePb.progress = round(winPercent.toFloat()).toInt()
 
         getTotalStatistic(this)
     }
 
     private fun setOnClickListeners() {
-        signOutBtn.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            NavigationManager(fragmentManager as FragmentManager)
-                .openFragment(NavigationManager.SCREEN_LOGIN)
-        }
         sendDataBtn.setOnClickListener {
             val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
 
@@ -102,12 +103,25 @@ class StatisticFragment : Fragment() {
             user.email = FirebaseAuth.getInstance().currentUser?.email.toString()
             user.win = winCount.toLong()
             user.loose = looseCount.toLong()
-            updateUserStatistic(user)
+            updateUserStatistic(this, user)
         }
     }
 
     fun setGlobalStatistics(users: List<User>) {
+        users.forEach { it.setPercents() }
+        users.sortedBy { it.winPercent }
         recycler.adapter = StatisticsAdapter(users, (context as Context))
         recycler.layoutManager = LinearLayoutManager(context)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add(context?.getString(R.string.sign_out))
+            .setOnMenuItemClickListener {
+                FirebaseAuth.getInstance().signOut()
+                NavigationManager(fragmentManager as FragmentManager)
+                    .openFragment(NavigationManager.SCREEN_LOGIN)
+                true
+            }
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

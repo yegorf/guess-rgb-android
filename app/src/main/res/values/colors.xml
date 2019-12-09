@@ -8,4 +8,9 @@
     <color name="colorAddResult">#68aeea</color>
     <color name="colorGreen">#b9ffc5</color>
     <color name="colorRed">#ffacac</color>
+
+    <color name="colorGold">#ffd700</color>
+    <color name="colorSilver">#c0c0c0</color>
+    <color name="colorBronze">#cd7f32</color>
+    <color name="colorLightBlue">#8080ff</color>
 </resources>

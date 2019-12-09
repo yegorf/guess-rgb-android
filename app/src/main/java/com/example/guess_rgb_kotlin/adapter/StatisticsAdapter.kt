@@ -4,10 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guess_rgb_kotlin.R
 import com.example.guess_rgb_kotlin.data.entity.User
+import kotlin.math.round
 
 class StatisticsAdapter(var data: List<User>, context: Context) :
     RecyclerView.Adapter<StatisticsAdapter.StatisticsHolder>() {
@@ -22,6 +24,7 @@ class StatisticsAdapter(var data: List<User>, context: Context) :
         val user = data[position]
         holder.initViews()
         holder.setData(user)
+        holder.setPlace(position + 1)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatisticsHolder {
@@ -31,20 +34,40 @@ class StatisticsAdapter(var data: List<User>, context: Context) :
 
     class StatisticsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        lateinit var nameTv: TextView
-        lateinit var winTv: TextView
-        lateinit var looseTv: TextView
+        private lateinit var nameTv: TextView
+        private lateinit var winTv: TextView
+        private lateinit var looseTv: TextView
+        private lateinit var scorePb: ProgressBar
+        private lateinit var placeTv: TextView
 
         fun initViews() {
             nameTv = itemView.findViewById(R.id.tv_user_name)
             winTv = itemView.findViewById(R.id.tv_user_win)
             looseTv = itemView.findViewById(R.id.tv_user_loose)
+            scorePb = itemView.findViewById(R.id.pb_progress)
+            placeTv = itemView.findViewById(R.id.tv_place)
         }
 
         fun setData(user: User) {
+            val winText = "${user.win} (${user.winPercent}%)"
+            val looseText = "${user.loose} (${user.loosePercent}%)"
+
             nameTv.text = user.email
-            winTv.text = user.win.toString()
-            looseTv.text = user.loose.toString()
+            winTv.text = winText
+            looseTv.text = looseText
+
+            scorePb.progress = round(user.winPercent.toFloat()).toInt()
+        }
+
+        fun setPlace(place: Int) {
+            placeTv.text = place.toString()
+            val medal = when(place) {
+                1 -> R.drawable.statistic_circle_1
+                2 -> R.drawable.statistic_circle_2
+                3 -> R.drawable.statistic_circle_3
+                else -> R.drawable.statistic_circle
+            }
+            placeTv.setBackgroundResource(medal)
         }
     }
 }

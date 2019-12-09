@@ -13,6 +13,6 @@ fun calculateLoose(win: Int, loose: Int): String {
 }
 
 private fun round(number: Double): String {
-    val format = DecimalFormat("##.00")
+    val format = DecimalFormat("##,00")
     return format.format(number)
 }

@@ -15,7 +15,8 @@ import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 class RgbFragment : Fragment() {
 
     lateinit var colorPickerView: ColorPickerView
-    lateinit var colorTv: TextView
+    lateinit var rgbColorTv: TextView
+    lateinit var hexColorTv: TextView
     lateinit var colorView: LinearLayout
 
     companion object {
@@ -39,10 +40,12 @@ class RgbFragment : Fragment() {
         colorPickerView.colorListener =
             ColorEnvelopeListener { colorEnvelope: ColorEnvelope, _: Boolean ->
                 colorView.setBackgroundColor(colorEnvelope.color)
+                val hex = "HEX: #${colorEnvelope.hexCode.substring(2)}"
+                hexColorTv.text = hex
                 val colorArray = colorEnvelope.argb
-                val color = "${colorArray[1]},${colorArray[2]},${colorArray[3]}"
-                colorTv.text = color
-                colorTv.setTextColor(
+                val color = "RGB: ${colorArray[1]},${colorArray[2]},${colorArray[3]}"
+                rgbColorTv.text = color
+                rgbColorTv.setTextColor(
                     android.graphics.Color.rgb(
                         255 - colorArray[1],
                         255 - colorArray[2],
@@ -54,7 +57,8 @@ class RgbFragment : Fragment() {
 
     private fun initViews(view: View) {
         colorPickerView = view.findViewById(R.id.v_color_picker)
-        colorTv = view.findViewById(R.id.tv_rgb_code)
+        rgbColorTv = view.findViewById(R.id.tv_rgb_code)
+        hexColorTv = view.findViewById(R.id.tv_hex_code)
         colorView = view.findViewById(R.id.v_color_code)
     }
 }

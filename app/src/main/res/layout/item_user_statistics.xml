@@ -4,24 +4,125 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/monitor_total_statistic">
 
-    <TextView
-        android:id="@+id/tv_user_name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="yegorkhohlov@gmail.com" />
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp">
 
-    <TextView
-        android:id="@+id/tv_user_win"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="20" />
+        <TextView
+            android:id="@+id/tv_place"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/statistic_circle"
+            android:gravity="center"
+            tools:text="1" />
 
-    <TextView
-        android:id="@+id/tv_user_loose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="10" />
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorHighLine"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            tools:text="yegorkhohlov@gmail.com" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:text="@string/right"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"/>
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_user_win"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                tools:text="32"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:text="@string/wrong"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"/>
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_user_loose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                tools:text="54"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="4dp"
+        android:progressDrawable="@drawable/user_progress_bar"/>
 
 </LinearLayout>
