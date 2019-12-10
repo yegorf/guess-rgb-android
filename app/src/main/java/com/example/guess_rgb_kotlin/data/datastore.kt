@@ -15,7 +15,6 @@ const val WIN_COUNT = "win"
 const val LOOSE_COUNT = "loose"
 
 fun getTotalStatistic(view: StatisticFragment) {
-    view.showProgress()
     val store = FirebaseFirestore.getInstance()
     store.collection(USERS)
         .get()
@@ -26,7 +25,6 @@ fun getTotalStatistic(view: StatisticFragment) {
                 user.email = it.id
                 data.add(user)
             }
-            view.dismissProgress()
             view.setGlobalStatistics(data)
         }
         .addOnFailureListener {

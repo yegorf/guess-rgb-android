@@ -93,6 +93,7 @@ class StatisticFragment : Fragment() {
 
         scorePb.progress = round(winPercent.toFloat()).toInt()
 
+        showProgress()
         getTotalStatistic(this)
     }
 
@@ -112,10 +113,12 @@ class StatisticFragment : Fragment() {
         user.email = FirebaseAuth.getInstance().currentUser?.email.toString()
         user.win = winCount.toLong()
         user.loose = looseCount.toLong()
+        showProgress()
         updateUserStatistic(this, user)
     }
 
     fun setGlobalStatistics(users: List<User>) {
+        dismissProgress()
         users.forEach { it.setPercents() }
         users.sortedBy { it.winPercent }
 
