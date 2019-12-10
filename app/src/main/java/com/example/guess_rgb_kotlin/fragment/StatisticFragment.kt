@@ -60,13 +60,12 @@ class StatisticFragment : Fragment() {
         fetchPb = view.findViewById(R.id.pb_fetch_progress)
     }
 
-    public fun showProgress() {
+    fun showProgress() {
         fetchPb.visibility = View.VISIBLE
     }
 
-    public fun dismissProgress() {
+    fun dismissProgress() {
         fetchPb.visibility = View.GONE
-
     }
 
     private fun setData() {
@@ -97,6 +96,7 @@ class StatisticFragment : Fragment() {
         getTotalStatistic(this)
     }
 
+
     private fun sendStatistic() {
         val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
 
@@ -118,8 +118,14 @@ class StatisticFragment : Fragment() {
     fun setGlobalStatistics(users: List<User>) {
         users.forEach { it.setPercents() }
         users.sortedBy { it.winPercent }
+
+        val layoutManager = object : LinearLayoutManager(context) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+        recycler.layoutManager = layoutManager
         recycler.adapter = StatisticsAdapter(users, (context as Context))
-        recycler.layoutManager = LinearLayoutManager(context)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
